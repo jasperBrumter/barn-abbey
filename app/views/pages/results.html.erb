@@ -2,22 +2,33 @@
 	You are not allowed to be here.
 <% else %>
 	<p>
-	Thanks for using Barn Abbey to find bars and cafes close to : <%= @request %> <br><br>
+	<b>Thanks for using Barn Abbey to find bars and cafes close to : <%= @request %> </b><br><br>
 
-	First I used the Geocoder ruby gem to find latitudes and longitudes
-	the place you entered was identified at: 
-	<%= @coordinates %>
+	<b>First I used the Geocoder ruby gem to find latitudes and longitudes. <br>
+	The place you entered was identified at: 
+	<%= @coordinates %></b>
 	<br><br>
 
-	I then calculate the distance from that geographic point to the establishments in the extract.json
+	<b>I then list the establishments in the extract.json by distance.</b>
 	<br>
 	<% @data_hash.each do |place| %>
 		<%= place["name"] %>: located at <%=  place["coordinates"]["latitude"]%>,<%= place["coordinates"]["longitude"] %> <br>
 	<% end %>
 
-	<br><br><br><br><br>
-	<%= @placeSearch %>
+	<br><br><br>
+	<b>Now, we also get the results from the Google Nearby Search API, and also list them by distance. </b><br>
+	<% @google_results_hash.each do |place| %>
+		<%= place["name"] %> located at: <%= place["geometry"]["location"]["lat"] %>, <%= place["geometry"]["location"]["lng"] %> <br>
+	<% end %>
+	<br><br><br><br>
 
 
+	<b>Finally, we can give the user a list of all establishments that are closest from him </b><br>
+	<% @ordered_list.each do |hash|%>
+		<% hash.each do |key, value| %>
+			<%= key %>: <%= (value*1000).to_i %>m away <br>
+		<% end %>
+	<% end %>
+	
 	</p>
 <% end %>

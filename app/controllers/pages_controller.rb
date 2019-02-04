@@ -12,17 +12,31 @@ class PagesController < ApplicationController
   	results = Geocoder.search(@request)
 	@coordinates = results.first.coordinates
 
-	key = ENV[G_K]
 
 	#Mais si l'on voulait obtenir un resultat plus precis que Geocoder, en utilisant par exemple l'API Autocomplete on le ferait ainsi:
-  	#@googleresults = JSON.parse(open("https://maps.googleapis.com/maps/api/place/autocomplete/json?key=#{ENV(G_K)}&input=#{@request}"))
+  	#@googleresults = JSON.parse(open("https://maps.googleapis.com/maps/api/place/autocomplete/json?key=#{ENV['NOT_PUBLIC_KEY']}&input=#{@request}".gsub(" ","%20")))
+ 
 
-  	@placeSearch =  HTTParty.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=#{key}&type=bar&location=#{@coordinates[0]},#{@coordinates[1]}&radius=20000&rankby=distance&query=#{@request}")
+  	googleFile =  JSON.parse(HTTParty.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{@coordinates[0]},#{@coordinates[1]}&radius=20000&type=bar&key=#{ENV['NOT_PUBLIC_KEY']}").to_s)["results"]
+  	@google_results_hash = googleFile.sort_by{|y| getDistanceFromLatLonInKm(y["geometry"]["location"]["lat"],y["geometry"]["location"]["lng"],@coordinates[0],@coordinates[1])}
 
   	#on ouvre le fichier extract.JSON qui contient les donnees (cela pourrait etre remplace par des entrees Active Records)
   	file = JSON.parse(File.read("public/extract.json"))
   	#on les parse dans un hash, qu'on ordonne ensuite selon la distance du point trouve par Geocoder.
-	@data_hash = file["places"].sort_by{|y| getDistanceFromLatLonInKm(y["coordinates"]["latitude"],y["coordinates"]["longitude"],@coordinates[0],@coordinates[1])}  	
+	@data_hash = file["places"].sort_by{|y| getDistanceFromLatLonInKm(y["coordinates"]["latitude"],y["coordinates"]["longitude"],@coordinates[0],@coordinates[1])}  
+
+
+	#on fait une liste jointe des deux,
+	@ordered_list = []
+	@google_results_hash.each do |place|
+		@ordered_list << { place["name"] => getDistanceFromLatLonInKm(place["geometry"]["location"]["lat"],place["geometry"]["location"]["lng"],@coordinates[0],@coordinates[1]) }
+	end
+	@data_hash.each do |place|
+		@ordered_list << { place["name"] => getDistanceFromLatLonInKm(place["coordinates"]["latitude"],place["coordinates"]["longitude"],@coordinates[0],@coordinates[1])}
+	end
+	#qu'on ordonne par distance
+	@ordered_list.sort_by!{|y| y.values[0]}
+
   end
 
   private
