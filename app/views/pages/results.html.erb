@@ -1,0 +1,23 @@
+<% unless @valid %>
+	You are not allowed to be here.
+<% else %>
+	<p>
+	Thanks for using Barn Abbey to find bars and cafes close to : <%= @request %> <br><br>
+
+	First I used the Geocoder ruby gem to find latitudes and longitudes
+	the place you entered was identified at: 
+	<%= @coordinates %>
+	<br><br>
+
+	I then calculate the distance from that geographic point to the establishments in the extract.json
+	<br>
+	<% @data_hash.each do |place| %>
+		<%= place["name"] %>: located at <%=  place["coordinates"]["latitude"]%>,<%= place["coordinates"]["longitude"] %> <br>
+	<% end %>
+
+	<br><br><br><br><br>
+	<%= @placeSearch %>
+
+
+	</p>
+<% end %>

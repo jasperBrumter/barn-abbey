@@ -1,0 +1,285 @@
+{
+    "places": [{
+            "id": 498,
+            "name": "Hôtel du Collectionneur",
+            "type_filter": [],
+            "ambience_filter": [],
+            "coordinates": {
+                "latitude": 48.8767948,
+                "longitude": 2.30718460000003
+            },
+            "has_offers": false,
+            "is_payment_available": false,
+            "is_booking_available": false,
+            "is_favorited": false,
+            "opening_hours": [{
+                "week_day": "friday",
+                "open_time": 600,
+                "close_time": 1560
+            }],
+            "picture_url": "https://barnaby-development.s3.amazonaws.com/uploads/picture/picture_file/3568/Purple_Bar_-_Hotel_du_Collectionneur.jpg"
+        },
+        {
+            "id": 497,
+            "name": "La Fontaine de Belleville",
+            "type_filter": [],
+            "ambience_filter": [],
+            "coordinates": {
+                "latitude": 48.8757796,
+                "longitude": 2.36846709999998
+            },
+            "has_offers": false,
+            "is_payment_available": false,
+            "is_booking_available": false,
+            "is_favorited": false,
+            "opening_hours": [{
+                "week_day": "friday",
+                "open_time": 480,
+                "close_time": 1320
+            }],
+            "picture_url": "https://barnaby-development.s3.amazonaws.com/uploads/picture/picture_file/3563/La-Fontaine-De-Belleville-65.jpg"
+        },
+        {
+            "id": 57,
+            "name": "Le Comptoir Général",
+            "type_filter": [],
+            "ambience_filter": [],
+            "coordinates": {
+                "latitude": 48.8724233,
+                "longitude": 2.36554239999998
+            },
+            "has_offers": false,
+            "is_payment_available": false,
+            "is_booking_available": false,
+            "is_favorited": false,
+            "opening_hours": [{
+                "week_day": "friday",
+                "open_time": 660,
+                "close_time": 1560
+            }],
+            "picture_url": "https://barnaby-development.s3.amazonaws.com/uploads/picture/picture_file/351/comptoir.jpg"
+        },
+        {
+            "id": 394,
+            "name": "Ice Kube Bar",
+            "type_filter": [],
+            "ambience_filter": [],
+            "coordinates": {
+                "latitude": 48.88657,
+                "longitude": 2.35883319999994
+            },
+            "has_offers": false,
+            "is_payment_available": false,
+            "is_booking_available": false,
+            "is_favorited": false,
+            "opening_hours": [{
+                "week_day": "friday",
+                "open_time": 1110,
+                "close_time": 1530
+            }],
+            "picture_url": "https://barnaby-development.s3.amazonaws.com/uploads/picture/picture_file/3103/KubeHotel_IceKubeBar_M19A2659.jpg"
+        },
+        {
+            "id": 254,
+            "name": "Colorova",
+            "type_filter": [],
+            "ambience_filter": [],
+            "coordinates": {
+                "latitude": 48.8469937,
+                "longitude": 2.32609189999994
+            },
+            "has_offers": false,
+            "is_payment_available": false,
+            "is_booking_available": false,
+            "is_favorited": false,
+            "opening_hours": [{
+                "week_day": "friday",
+                "open_time": 540,
+                "close_time": 1080
+            }],
+            "picture_url": "https://barnaby-development.s3.amazonaws.com/uploads/picture/picture_file/2116/tumblr_n3xa3jQHMz1t4t6m6o4_1280.jpg"
+        },
+        {
+            "id": 93,
+            "name": "The Siffleur de Ballons",
+            "type_filter": [],
+            "ambience_filter": [],
+            "coordinates": {
+                "latitude": 48.8495343,
+                "longitude": 2.38127789999999
+            },
+            "has_offers": false,
+            "is_payment_available": false,
+            "is_booking_available": false,
+            "is_favorited": false,
+            "opening_hours": [{
+                    "week_day": "friday",
+                    "open_time": 630,
+                    "close_time": 900
+                },
+                {
+                    "week_day": "friday",
+                    "open_time": 1050,
+                    "close_time": 1410
+                }
+            ],
+            "picture_url": "https://barnaby-development.s3.amazonaws.com/uploads/picture/picture_file/533/sdf.jpg"
+        },
+        {
+            "id": 474,
+            "name": "The Five",
+            "type_filter": [],
+            "ambience_filter": [],
+            "coordinates": {
+                "latitude": 48.8514527,
+                "longitude": 2.33792500000004
+            },
+            "has_offers": false,
+            "is_payment_available": false,
+            "is_booking_available": false,
+            "is_favorited": false,
+            "opening_hours": [{
+                "week_day": "friday",
+                "open_time": 1080,
+                "close_time": 1560
+            }],
+            "picture_url": "https://barnaby-development.s3.amazonaws.com/uploads/picture/picture_file/3422/31081719_1195343197269414_5970708815330955195_n.jpg"
+        },
+        {
+            "id": 445,
+            "name": "1905",
+            "type_filter": [],
+            "ambience_filter": [],
+            "coordinates": {
+                "latitude": 48.8537471,
+                "longitude": 2.36443689999999
+            },
+            "has_offers": false,
+            "is_payment_available": false,
+            "is_booking_available": false,
+            "is_favorited": false,
+            "opening_hours": [{
+                "week_day": "friday",
+                "open_time": 1080,
+                "close_time": 1560
+            }],
+            "picture_url": "https://barnaby-development.s3.amazonaws.com/uploads/picture/picture_file/3170/DSC_3901_copie.jpg"
+        },
+        {
+            "id": 220,
+            "name": "Thé-ritoires",
+            "type_filter": [],
+            "ambience_filter": [],
+            "coordinates": {
+                "latitude": 48.8513134,
+                "longitude": 2.33827270000006
+            },
+            "has_offers": false,
+            "is_payment_available": true,
+            "is_booking_available": false,
+            "is_favorited": false,
+            "opening_hours": [{
+                "week_day": "friday",
+                "open_time": 630,
+                "close_time": 1170
+            }],
+            "picture_url": "https://barnaby-development.s3.amazonaws.com/uploads/picture/picture_file/1323/DSC_0154.jpg"
+        },
+        {
+            "id": 288,
+            "name": "Delirio",
+            "type_filter": [],
+            "ambience_filter": [],
+            "coordinates": {
+                "latitude": 48.8570136,
+                "longitude": 2.36879690000001
+            },
+            "has_offers": false,
+            "is_payment_available": false,
+            "is_booking_available": false,
+            "is_favorited": false,
+            "opening_hours": [{
+                "week_day": "friday",
+                "open_time": 600,
+                "close_time": 1560
+            }],
+            "picture_url": "https://barnaby-development.s3.amazonaws.com/uploads/picture/picture_file/2351/1-5.jpg"
+        },
+        {
+            "id": 313,
+            "name": "Arômes Coffee Shop",
+            "type_filter": [],
+            "ambience_filter": [],
+            "coordinates": {
+                "latitude": 48.8648756,
+                "longitude": 2.37522309999997
+            },
+            "has_offers": false,
+            "is_payment_available": false,
+            "is_booking_available": false,
+            "is_favorited": false,
+            "opening_hours": [{
+                "week_day": "friday",
+                "open_time": 510,
+                "close_time": 1200
+            }],
+            "picture_url": "https://barnaby-development.s3.amazonaws.com/uploads/picture/picture_file/2642/DSC_0096.jpg"
+        },
+        {
+            "id": 451,
+            "name": "Baroom",
+            "type_filter": [],
+            "ambience_filter": [],
+            "coordinates": {
+                "latitude": 48.8547529,
+                "longitude": 2.37231350000002
+            },
+            "has_offers": false,
+            "is_payment_available": false,
+            "is_booking_available": false,
+            "is_favorited": false,
+            "opening_hours": [{
+                "week_day": "friday",
+                "open_time": 960,
+                "close_time": 1560
+            }],
+            "picture_url": "https://barnaby-development.s3.amazonaws.com/uploads/picture/picture_file/3275/Baroom_c1.jpg"
+        },
+        {
+            "id": 467,
+            "name": "The Orangerie",
+            "type_filter": [],
+            "ambience_filter": [],
+            "coordinates": {
+                "latitude": 44.8425558,
+                "longitude": -0.574786000000017
+            },
+            "has_offers": false,
+            "is_payment_available": false,
+            "is_booking_available": false,
+            "is_favorited": false,
+            "opening_hours": [{
+                "week_day": "friday",
+                "open_time": 480,
+                "close_time": 1260
+            }],
+            "picture_url": "https://barnaby-development.s3.amazonaws.com/uploads/picture/picture_file/3417/__Yoris_Photographe__Agence_Taylor_Yandell__14_.jpg"
+        },
+        {
+            "id": 95,
+            "name": "The Vintage Wine Bar",
+            "type_filter": [],
+            "ambience_filter": [],
+            "coordinates": {
+                "latitude": 50.8334614,
+                "longitude": 4.35548570000003
+            },
+            "has_offers": false,
+            "is_payment_available": false,
+            "is_booking_available": false,
+            "is_favorited": false,
+            "opening_hours": [],
+            "picture_url": "https://barnaby-development.s3.amazonaws.com/uploads/picture/picture_file/549/Vintage_Hotel_Wine_Bar.jpg"
+        }
+    ]
+}
