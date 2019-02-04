@@ -7,6 +7,9 @@
 	<b>First I used the Geocoder ruby gem to find latitudes and longitudes. <br>
 	The place you entered was identified at: 
 	<%= @coordinates %></b>
+	<br>
+	On obtient ce resultat en utilisant le gem Geocoder, gratuit. Parfois il marche mal si l'endroit est mal renseigne, mais il obtient dans la plupart des cas des resultats tres similaires a Google.
+	Mais si l'on voulait obtenir un resultat plus precis que Geocoder, on pourrait utiliser une deuxieme requete d'API de Google.
 	<br><br>
 
 	<b>I then list the establishments in the extract.json by distance.</b>
