@@ -8,14 +8,14 @@ class PagesController < ApplicationController
   	#on trouve l'autre parametre qui contient ce que l'utilisateur a entre dans sa barre de recherche
   	@request = params["q"]
 
-  	#on utilise le gem Geocoder pour trouver gratuitement les latitudes-longitudes. Il est dans la plupart des cas aussi precis que l'API de Google.
-  	results = Geocoder.search(@request)
+	#On fait une premiere requete a l'API Autocomplete de Google
+  	placeresults = JSON.parse(HTTParty.get("https://maps.googleapis.com/maps/api/place/autocomplete/json?key=#{ENV['NOT_PUBLIC_KEY']}&input=#{@request}").to_s)
+ 	@autocomplete_result = (placeresults["predictions"].first)["description"]
+
+
+ 	#on utilise le Gem Geocoder pour trouver les latitudes longitudes de ce point
+  	results = Geocoder.search(@autocomplete_result)
 	@coordinates = results.first.coordinates
-
-
-	#Mais si l'on voulait obtenir un resultat plus precis que Geocoder, en utilisant par exemple l'API Autocomplete on le ferait ainsi:
-  	#@googleresults = JSON.parse(open("https://maps.googleapis.com/maps/api/place/autocomplete/json?key=#{ENV['NOT_PUBLIC_KEY']}&input=#{@request}".gsub(" ","%20")))
- 
 
   	googleFile =  JSON.parse(HTTParty.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{@coordinates[0]},#{@coordinates[1]}&radius=20000&type=bar&key=#{ENV['NOT_PUBLIC_KEY']}").to_s)["results"]
   	@google_results_hash = googleFile.sort_by{|y| getDistanceFromLatLonInKm(y["geometry"]["location"]["lat"],y["geometry"]["location"]["lng"],@coordinates[0],@coordinates[1])}

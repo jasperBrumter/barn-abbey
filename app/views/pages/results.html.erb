@@ -1,7 +1,9 @@
 <% unless @valid %>
 	You are not allowed to be here.
 <% else %>
+
 	<p>
+		<%= @autocomplete_result %> <br><br><br>
 	<b>Thanks for using Barn Abbey to find bars and cafes close to : <%= @request %> </b><br><br>
 
 	<b>First I used the Geocoder ruby gem to find latitudes and longitudes. <br>
