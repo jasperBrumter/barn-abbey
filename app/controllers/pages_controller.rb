@@ -41,7 +41,6 @@ class PagesController < ApplicationController
 	end
 
 	@places = Place.all.sort_by{|y| getDistanceFromLatLonInKm(y["latitude"].to_f,y["longitude"].to_f,@coordinates[0],@coordinates[1])}  
-	raise
   end
 
   private
