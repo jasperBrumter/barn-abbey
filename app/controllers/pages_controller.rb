@@ -18,25 +18,29 @@ class PagesController < ApplicationController
 	@coordinates = results.first.coordinates
 
   	googleFile =  JSON.parse(HTTParty.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{@coordinates[0]},#{@coordinates[1]}&radius=20000&type=bar&key=#{ENV['NOT_PUBLIC_KEY']}").to_s)["results"]
-  	@google_results_hash = googleFile.sort_by{|y| getDistanceFromLatLonInKm(y["geometry"]["location"]["lat"],y["geometry"]["location"]["lng"],@coordinates[0],@coordinates[1])}
+  	
 
-  	#on ouvre le fichier extract.JSON qui contient les donnees (cela pourrait etre remplace par des entrees Active Records)
-  	file = JSON.parse(File.read("public/extract.json"))
-  	#on les parse dans un hash, qu'on ordonne ensuite selon la distance du point trouve par Geocoder.
-	@data_hash = file["places"].sort_by{|y| getDistanceFromLatLonInKm(y["coordinates"]["latitude"],y["coordinates"]["longitude"],@coordinates[0],@coordinates[1])}  
-
-
-	#on fait une liste jointe des deux,
-	@ordered_list = []
-	@google_results_hash.each do |place|
-		@ordered_list << { place["name"] => getDistanceFromLatLonInKm(place["geometry"]["location"]["lat"],place["geometry"]["location"]["lng"],@coordinates[0],@coordinates[1]) }
+	#add the results to the database if they don't exist yet
+	googleFile.each do |x|
+		if Place.where(name: x["name"]) == []
+			Place.create({
+				name: x["name"],
+				latitude: x["geometry"]["location"]["lat"],
+				longitude: x["geometry"]["location"]["lat"],
+				found: "google",
+				type_filter: x["types"],
+				ambience_filter: [],
+				has_offers: false,
+				is_payment_available: false,
+				is_booking_available: false,
+				is_favorited: false,
+				picture_url: "",
+				address: x["vicinity"]
+			})
+		end
 	end
-	@data_hash.each do |place|
-		@ordered_list << { place["name"] => getDistanceFromLatLonInKm(place["coordinates"]["latitude"],place["coordinates"]["longitude"],@coordinates[0],@coordinates[1])}
-	end
-	#qu'on ordonne par distance
-	@ordered_list.sort_by!{|y| y.values[0]}
 
+	@places = Place.all.sort_by{|y| getDistanceFromLatLonInKm(y["latitude"].to_f,y["longitude"].to_f,@coordinates[0],@coordinates[1])}  
   end
 
   private

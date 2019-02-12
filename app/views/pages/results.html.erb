@@ -1,39 +1,50 @@
 <% unless @valid %>
-	You are not allowed to be here.
+{
+	"results": "You are not allowed to be here."
+}
 <% else %>
-
-	<p>
-		<%= @autocomplete_result %> <br><br><br>
-	<b>Thanks for using Barn Abbey to find bars and cafes close to : <%= @request %> </b><br><br>
-
-	<b>First I used the Geocoder ruby gem to find latitudes and longitudes. <br>
-	The place you entered was identified at: 
-	<%= @coordinates %></b>
-	<br>
-	On obtient ce resultat en utilisant le gem Geocoder, gratuit. Parfois il marche mal si l'endroit est mal renseigne, mais il obtient dans la plupart des cas des resultats tres similaires a Google.
-	Mais si l'on voulait obtenir un resultat plus precis que Geocoder, on pourrait utiliser une deuxieme requete d'API de Google.
-	<br><br>
-
-	<b>I then list the establishments in the extract.json by distance.</b>
-	<br>
-	<% @data_hash.each do |place| %>
-		<%= place["name"] %>: located at <%=  place["coordinates"]["latitude"]%>,<%= place["coordinates"]["longitude"] %> <br>
-	<% end %>
-
-	<br><br><br>
-	<b>Now, we also get the results from the Google Nearby Search API, and also list them by distance. </b><br>
-	<% @google_results_hash.each do |place| %>
-		<%= place["name"] %> located at: <%= place["geometry"]["location"]["lat"] %>, <%= place["geometry"]["location"]["lng"] %> <br>
-	<% end %>
-	<br><br><br><br>
-
-
-	<b>Finally, we can give the user a list of all establishments that are closest from him </b><br>
-	<% @ordered_list.each do |hash|%>
-		<% hash.each do |key, value| %>
-			<%= key %>: <%= (value*1000).to_i %>m away <br>
+{
+	"results": [
+		<% @places.each_with_index do |place, index| %>
+			<% if index < 10 %>
+				{
+					"id": <%= place["id"] %>,
+		            "name": "<%= place["name"] %>",
+		            "found": "<%= place["found"] %>",
+		            "type_filter": <%= place["type_filter"].inspect %>,
+		            "ambience_filter": <%= place["ambience_filter"].inspect %>,
+		            "coordinates": {
+		                "latitude": <%= place["latitude"] %>,
+		                "longitude": <%= place["longitude"] %>
+		            },
+		            "has_offers": <%= place["has_offers"] %>,
+		            "is_payment_available": <%= place["is_payment_available"] %>,
+		            "is_booking_available": <%= place["is_booking_available"] %>,
+		            "is_favorited": <%= place["is_favorited"] %>,
+		            "picture_url": "<%= place["picture_url"] %>"
+	        
+				},
+			<% elsif index == 10 %>
+				{
+					"id": <%= place["id"] %>,
+		            "name": "<%= place["name"] %>",
+		            "found": "<%= place["found"] %>",
+		            "type_filter": <%= place["type_filter"].inspect %>,
+		            "ambience_filter": <%= place["ambience_filter"].inspect %>,
+		            "coordinates": {
+		                "latitude": <%= place["latitude"] %>,
+		                "longitude": <%= place["longitude"] %>
+		            },
+		            "has_offers": <%= place["has_offers"] %>,
+		            "is_payment_available": <%= place["is_payment_available"] %>,
+		            "is_booking_available": <%= place["is_booking_available"] %>,
+		            "is_favorited": <%= place["is_favorited"] %>,
+		            "picture_url": "<%= place["picture_url"] %>"
+	        
+				}
+			<% end %>
 		<% end %>
-	<% end %>
-	
-	</p>
+	]
+}			
 <% end %>
+
